@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+    <title>Capitalize</title>
+</head>
+<body>
+    <div class="container text-white bg-gray-300 ">
+        <h1>Capitalize first letter</h1>
+
+        <form action="" class="capitalize">
+            <label for="text">Enter Your Name: </label>
+            <input type="text" id="username" required>
+            <button type="button" onclick="capitalizeName()">Submit</button>
+        </form>
+    </div>
+    <div id="blankContainer"></div>
+
+
+    <script>
+      const container = document.getElementById('blankContainer');
+        function capitalizeName() {
+            const name = document.getElementById('username').value.trim();
+
+            const modifiedName = name.charAt(0).toLowerCase() === name.charAt(0) ? name.charAt(0).toUpperCase() + name.slice(1) : name;
+
+            container.textContent = `Your name is : ${modifiedName}`;
+        }
+    </script>
+</body>
+</html>

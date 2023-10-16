@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate rental cost</title>
+</head>
+<body >
+    <h1>Calculate rental cost for car</h1>
+    <select id="sltopt">
+        <option value="car type" hidden>Choose car type</option>
+        <option value="Economy">Economy</option>
+        <option value="Midsize">Midsize</option>
+        <option value="Luxury">Luxury</option>
+    </select><br><br>
+
+    <input type="text" placeholder="rent duration(days)" id="rentDuration"> <br><br>
+    <button onclick="calculateRent()">Calculate Rent</button>
+    <button onclick="location.reload()">Refresh</button>
+    <p id="output">Output</p>
+
+    <script>
+        function calculateRent() {
+            const rentalDuration = parseInt(document.querySelector('#rentDuration').value);
+            const carType = document.querySelector('#sltopt').value;
+            let rentalCost;
+
+            if(carType === "Economy") {
+                rentalCost = 4000;
+            } else if(carType === "Midsize") {
+                rentalCost = 10000;
+            } else if(carType === 'Luxury') {
+                rentalCost = 20000;
+            }
+
+            const totalCost = rentalCost * rentalDuration;
+
+            // selecting output from DOM
+            const outputScreen = document.querySelector('#output');
+
+            // Creating new span tag
+            const newSpanTag = document.createElement("span");
+            const totalCostText = document.createTextNode("Rs." + totalCost + "/-")
+            newSpanTag.appendChild(totalCostText);
+            newSpanTag.style.color = 'Green';
+            newSpanTag.style.fontWeight = "bold"
+            outputScreen.innerHTML = "Total Rental Cost: ";
+            outputScreen.appendChild(newSpanTag);
+
+        }
+    </script>
+</body>
+</html>

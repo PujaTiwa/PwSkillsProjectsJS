@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Text on Button click.</title>
+</head>
+<body>
+    <h1 id="head"> The most affordable learning platform</h1>
+    <button type="submit" id="btn">Text Change</button>
+
+    <script>
+        let button = document.getElementById('btn');
+        let heading = document.getElementById('head');
+
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            if(heading.textContent === "The most affordable learning platform"){
+                heading.textContent = 'PW Skills';
+            } else {
+                heading.textContent = 'The most affordable learning platform';
+            }
+
+        });
+    </script>
+</body>
+</html>

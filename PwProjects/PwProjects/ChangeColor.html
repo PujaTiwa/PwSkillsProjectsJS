@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Change the color on click</h1>
+    <button id="colorButton">Click</button>
+
+    <script>
+        const button = document.getElementById("colorButton");
+        const colorArr = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F']
+
+        button.addEventListener('click', () => {
+            let hexColor = '#'
+            for(let i=0;i<6;i++) {
+                hexColor += colorArr[Math.floor(Math.random() * colorArr.length)]
+                console.log(hexColor);
+            }
+            document.body.style.backgroundColor = hexColor;
+        })
+    </script>
+</body>
+</html>

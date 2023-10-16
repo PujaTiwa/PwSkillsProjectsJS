@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Calculate the final order price</title>
+    <link rel="stylesheet" href="finalOrderPrice.css">
+</head>
+<body>
+    <header>
+        <h1>Calculating Total Cart Cost</h1>
+    </header>
+
+    <div class="content">
+        <!-- Firt five product toy images -->
+        <div class="first-5-toy">
+
+            <!-- Card-1 -->
+            <div class="toy">
+                <span>
+                    <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/128413/scorpio-exterior-right-front-three-quarter-46.jpeg?isig=0&q=80&q=80" alt="">
+                    <p>price: 100&#8377;</p>
+                    <button type="button" onclick="selectToy(0)">Add to Cart</button>
+                </span>
+            </div>
+           
+            <!-- Card-2 -->
+            <div class="toy">
+                <span>
+                    <img src="https://i.ytimg.com/vi/Ii-NPVChkrQ/maxresdefault.jpg" alt="">
+                    <p>price: 200&#8377;</p>
+                    <button onclick="selectToy(1)">Add to Cart</button>
+                </span>
+            </div>
+
+            <!-- Card-3 -->
+            <div class="toy">
+                <span>
+                    <img src="https://imgd.aeplcdn.com/0x0/n/vjruesa_1463332.jpg?q=80" alt="">
+                    <p>price: 300&#8377;</p>
+                    <button onclick="selectToy(2)">Add to Cart</button>
+                </span>
+            </div>
+
+            <!-- Card-4 -->
+            <div class="toy">
+                <span>
+                    <img src="https://m.economictimes.com/thumb/msid-72989354,width-1200,height-900,resizemode-4,imgsize-109985/mig27a.jpg" alt="">
+                    <p>price: 400&#8377;</p>
+                    <button onclick="selectToy(3)">Add to Cart</button>
+                </span>
+            </div>
+
+            <!-- Card-5 -->
+            <div class="toy">
+                <span>
+                    <img src="https://backend.ainonline.com/sites/default/files/uploads/2020/01/emt9fr8uuaifndf.jpeg" alt="">
+                    <p>price: 500&#8377;</p>
+                    <button onclick="selectToy(4)">Add to Cart</button>
+                </span>
+            </div>
+        </div> 
+        <div class="next-5-toy">  
+
+            <!-- Card-6 -->
+            <div class="toy">
+                <span>
+                    <img src="https://images.hindustantimes.com/img/2022/02/12/1600x900/a2e56b1e-8bf1-11ec-8ba1-508084a9585c_1644663465633.jpeg" alt="">
+                    <p>price: 600&#8377;</p>
+                    <button onclick="selectToy(5)">Add to Cart</button>
+                </span>
+            </div>
+
+            <!-- Card-7 -->
+            <div class="toy">
+                <span>
+                    <img src="https://nuprol.com/pub/media/catalog/product/cache/0cb34a1f8cd4bcbc80c6dfce9db6701f/n/e/neg-dakc-tn_small.jpg" alt="">
+                    <p>price: 700&#8377;</p>
+                    <button onclick="selectToy(6)">Add to Cart</button>
+                </span>
+            </div>
+
+            <!-- Card-8 -->
+            <div class="toy">
+                <span>
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/51DQnqUH33L._AC_UL210_SR210,210_.jpg" alt="">
+                    <p>price: 800&#8377;</p>
+                    <button onclick="selectToy(7)">Add to Cart</button>
+                </span>
+            </div>
+
+            <!-- Card-9 -->
+            <div class="toy">
+                <span>
+                    <img src="https://media.istockphoto.com/id/1180235725/photo/military-tank-t-54-on-white.jpg?s=612x612&w=0&k=20&c=0eow5jCyCvQZ75RV9QLvRVa_zfLXec3TqdHnYKj_JOY=" alt="">
+                    <p>price: 900&#8377;</p>
+                    <button onclick="selectToy(8)">Add to Cart</button>
+                </span>
+            </div>
+
+            <!-- Card-10 -->
+            <div class="toy">
+                <span>
+                    <img src="https://media.istockphoto.com/id/1180235725/photo/military-tank-t-54-on-white.jpg?s=612x612&w=0&k=20&c=0eow5jCyCvQZ75RV9QLvRVa_zfLXec3TqdHnYKj_JOY=" alt="">
+                    <p>price: 1000&#8377;</p>
+                    <button onclick="selectToy(9)">Add to Cart</button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+<!-- Creating table for calculating total amount and total price -->
+<footer class="bill-book">
+    <div class="price-table">
+
+        <!-- creating top of the table -->
+        <div class="creating-table">
+            <h3>Sr. No.</h3>
+            <h3>Toy Img</h3>
+            <h3>Toy Name</h3>
+            <h3>Quantity</h3>
+            <h3>Price(&#8377;)</h3>
+        </div>
+
+        <!-- Adding content of the table -->
+        <div class="price-content">
+            <!-- <div class="creating-content">
+                <h3>1</h3>
+                <h3><img src="" alt=""></h3>
+                <h3>Toy1</h3>
+                <h3>5</h3>
+                <h3>5 * 20 = 100</h3>
+            </div>
+            <hr> -->
+        </div>
+
+        <!-- Adding footer of the table -->
+        <div class="Total-price-bottom">
+            <h3 class="total-quantity">Total Quantity : 0</h3>
+            <h3 class="Total-amount">Total Amount : 0</h3>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        let toyRow = [];
+        let totalQuantity = 0;
+        let totalAmount = 0;
+        let srNoCounter = 0;
+        let toyPriceArray = [];
+
+        const selectToy = (id) => {
+            // Enable the output screen
+
+            document.querySelector('.bill-book').style.display = "flex";
+
+            // *******************************************************************************************************
+
+            if(toyRow[id] != undefined) {
+                toyRow[id].quantity.textContent = Number(toyRow[id].quantity.textContent) + 1;
+
+                toyRow[id].price.textContent = `${Toydata[id].toyPrice} * ${toyRow[id].quantity.textContent} = ${Number(Toydata[id].toyPrice) * Number(toyRow[id].quantity.textContent)}`;
+
+                totalQuantity += 1;
+                totalAmount += Number(Toydata[id].toyPrice);
+
+                document.querySelector(".total-quantity").innerHTML = `Total Quantity : <span>${totalQuantity}</span>`;
+
+                document.querySelector(".Total-amount").innerHTML = `Total Amount : <span>\u20B9${totalAmount}</span>`;
+
+                return undefined;
+
+            }
+
+            // Creating div element
+            toyRow[id] = document.createElement("div");
+            toyRow[id].classList.add("creating-content");
+
+            document.querySelector(".price-content").appendChild(toyRow[id])
+
+            // Adding srNo.
+            toyRow[id].srNo = document.createElement('h3');
+            toyRow[id].srNo.textContent = (srNoCounter + 1);
+            toyRow[id].appendChild(toyRow[id].srNo);
+
+            // Adding Image
+            toyRow[id].toyImg = document.createElement(`img`);
+            toyRow[id].toyImg.src = Toydata[id].toyImg;
+            toyRow[id].appendChild(toyRow[id].toyImg);
+
+            // Adding toy Name
+            toyRow[id].toyName = document.createElement('h3');
+            toyRow[id].toyName.textContent = Toydata[id].toyName;
+            toyRow[id].appendChild(toyRow[id].toyName);
+
+            // Adding Quantity
+            toyRow[id].quantity = document.createElement('h3');
+            toyRow[id].quantity.textContent = 1;
+            toyRow[id].appendChild(toyRow[id].quantity);
+
+            // Addig Price
+            toyRow[id].price = document.createElement('h3');
+            toyRow[id].price.textContent = `${Toydata[id].toyPrice} * ${toyRow[i].quantity.textContent} = ${Number(Toydata[id].toyPrice) * Number(toyRow[id].quantity.textContent)}`;
+
+            toyRow[id].appendChild(toyRow[id].price);
+
+            toyPriceArray[id] = Toydata[id].toyPrice;
+
+            // Seperating by horizontal line
+            toyRow[id].hr = document.createElement('hr');
+            document.querySelector(".price-content").appendChild(toyRow[id].hr);
+
+            // calculating total quantity and total price
+            totalQuantity += 1;
+            totalAmount += Number(Toydata[id].toyPrice);
+
+            document.querySelector(".total-quantity").innerHTML = `Total Quantity : <span>${totalQuantity}</span>`;
+
+            document.querySelector(".Total-amount").innerHTML = `Total Amount : <span> \u20B9${totalAmount}</span>`;
+            srNoCounter++;
+        }
+        
+        // Following are the object where I taking toyName, toyPrice and toyImages
+
+            const Toydata = [
+                {
+                    toyName : "Scorpio",
+                    toyPrice : "100",
+                    toyImg : "https://imgd.aeplcdn.com/664x374/n/cw/ec/128413/scorpio-exterior-right-front-three-quarter-46.jpeg?isig=0&q=80&q=80",
+                },
+                {
+                    toyName : "Role's Royal",
+                    toyPrice : "200",
+                    toyImg : "https://img.indianautosblog.com/2023/06/13/spofec-programm-fur-den-rolls-royce-phantom-series-b2d5.jpg",
+                },
+                {
+                    toyName : "Maruti",
+                    toyPrice : "300",
+                    toyImg : "https://imgd.aeplcdn.com/0x0/n/vjruesa_1463332.jpg?q=80",
+                },
+                {
+                    toyName : "Mig-27",
+                    toyPrice : "400",
+                    toyImg : "https://m.economictimes.com/thumb/msid-72989354,width-1200,height-900,resizemode-4,imgsize-109985/mig27a.jpg",
+                },
+                {
+                    toyName : "chinuk",
+                    toyPrice : "500",
+                    toyImg : "https://backend.ainonline.com/sites/default/files/uploads/2020/01/emt9fr8uuaifndf.jpeg",
+                },
+                {
+                    toyName : "Tejas",
+                    toyPrice : "600",
+                    toyImg : "https://images.hindustantimes.com/img/2022/02/12/1600x900/a2e56b1e-8bf1-11ec-8ba1-508084a9585c_1644663465633.jpeg",
+                },
+                {
+                    toyName : "AK-21",
+                    toyPrice : "700",
+                    toyImg : "https://nuprol.com/pub/media/catalog/product/cache/0cb34a1f8cd4bcbc80c6dfce9db6701f/n/e/neg-dakc-tn_small.jpg",
+                },
+                {
+                    toyName : "Ak-47",
+                    toyPrice : "800",
+                    toyImg : "https://images-na.ssl-images-amazon.com/images/I/51DQnqUH33L._AC_UL210_SR210,210_.jpg",
+                },
+                {
+                    toyName : "T-54 tank",
+                    toyPrice : "900",
+                    toyImg : "https://media.istockphoto.com/id/1180235725/photo/military-tank-t-54-on-white.jpg?s=612x612&w=0&k=20&c=0eow5jCyCvQZ75RV9QLvRVa_zfLXec3TqdHnYKj_JOY=",
+                },
+                {
+                    toyName : "T-72 tank",
+                    toyPrice : "1000",
+                    toyImg : "https://media.istockphoto.com/id/1180235725/photo/military-tank-t-54-on-white.jpg?s=612x612&w=0&k=20&c=0eow5jCyCvQZ75RV9QLvRVa_zfLXec3TqdHnYKj_JOY=",
+                }
+            ]
+    </script>
+</body>
+</html>

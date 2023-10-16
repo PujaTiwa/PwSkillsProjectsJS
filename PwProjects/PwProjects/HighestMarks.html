@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highest Marks</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    label{
+        display: block;
+        padding: 10px;
+        font-size: 28px;
+        color:#74087e;
+    }
+    label:hover{
+        font-size: 30px;
+        color: green;
+    }
+    input{
+        padding: 12px 30px;
+        border-radius: 8px;
+    }
+    input:hover{
+        border-color: royalblue;
+        box-shadow: 0 0 30px royalblue;
+    }
+    body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        background: #212121;
+        color: aliceblue;
+    }
+    .bodyShadow{
+        box-shadow: 0 0 50px;
+        padding: 50px 100px;
+        background-color: white;
+        border-radius: 10px;
+    }
+    body h1{
+        margin-bottom: 20px;
+        font-size: 40px;
+        color: green;
+    }
+    body h3{
+        margin-bottom: 20px;
+        font-size: 32px;
+        color: #a82323;
+    }
+    button{
+        font-size: 20px;
+        border-radius: 10px;
+        padding: 10px 20px;
+        background: #08707e;
+        border: none;
+        color: white;
+        margin-left: 130px;
+        cursor: pointer;
+    }
+    button:hover{
+        font-size: 24px;
+    }
+    #blankContainer{
+        font-size: 32px;
+        color: #a719ac;
+        font-weight: 800;
+    }
+</style>
+<body>
+    <div class="bodyShadow">
+        <h1>Highest marks Evaluation</h1>
+        <h3>Enter marks of all five students</h3>
+        <form class="studentForm">
+            <label for="marks1">Student1: 
+                <input type="text" id="Number1" name="marks[]">
+            </label>
+            <label for="marks2">Student2: 
+                <input type="text" id="Number2" name="marks[]">
+            </label>
+            <label for="marks3">Student3: 
+                <input type="text" id="Number3" name="marks[]">
+            </label>
+            <label for="marks4">Student4: 
+                <input type="text" id="Number4" name="marks[]">
+            </label>
+            <label for="marks5">Student5: 
+                <input type="text" id="Number5" name="marks[]">
+            </label>
+
+            <button id="button">Find Highest Marks</button>
+        </form>
+    </div>
+    <div id="blankContainer"></div>
+
+    <script>
+
+        const studentMarksForm = document.querySelector(".studentForm");
+        const studentResult = document.querySelector('#blankContainer');
+
+        studentMarksForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+        const marks = Array.from(this.elements['marks[]']).map(element => parseFloat(element.value));
+
+        const highestMarks = Math.max(...marks);
+        const studentIndex = marks.findIndex(marks => marks === highestMarks) + 1;
+        const studentName = `Student ${studentIndex}`;
+
+        const result = isNaN(highestMarks) ?  "Enter valid marks for all students" : `${studentName} scored the highest marks: ${highestMarks}`;
+
+        studentResult.textContent = result;
+        });
+    </script>
+</body>
+</html>

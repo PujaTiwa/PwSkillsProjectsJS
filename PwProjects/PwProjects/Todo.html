@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+          .content-auto {
+            content-visibility: auto;
+          }
+        }
+      </style>
+</head>
+<body>
+      <div class="container w-[40rem] p-7 m-auto lg:bg-black bg-gray-700 text-white flex flex-col items-center justify-center leading-8">
+        <h2 class="text-3xl text-yellow-500 mb-5 bold">ToDo App for Storing Data</h2>
+        <div id="input-sec">
+            <label for="taskInput" class="text-xl">Enter task: </label>
+            <input class="bg-gray-600 text-white text-center border-b-2 border-purple-500 rounded h-7 py-3 ml-2 mb-3 italic text-sm" type="text" id="taskInput" placeholder="" required>
+        </div>
+        <button id="btn" class="text-orange-300 underline italic">Add Items</button>
+        <h3 id="checkTask" class="text-red-400 text-2xl">To do the task checkout</h3>
+        <ul id="taskList" class="text-green-300 space-x-2" ></ul>
+
+        <p id="clearAllBtn" class="cursor-pointer underline italic">Clear All List</p>  
+      </div> 
+
+      <script>
+        const taskInput = document.getElementById('taskInput')
+        const button = document.getElementById("btn")
+        const taskList = document.getElementById("taskList")
+        const checkTask = document.getElementById("checkTask")
+        const clearAllBtn = document.getElementById("clearAllBtn")
+        const deleteTask = document.querySelector('.delete-icon');
+
+        button.addEventListener('click', () => {
+            checkTask.style.display = 'flex'
+            const inputValue = taskInput.value;
+
+            if(inputValue !== "") {
+                const listItem = document.createElement("li")
+                listItem.classList.add("todoClass")
+
+                const checkBox = document.createElement("input")
+                checkBox.type = 'checkbox';
+
+                const span = document.createElement("span")
+                span.textContent = inputValue;
+
+                const deleteTask = document.createElement('i');
+                deleteTask.classList.add("fas", 'fa-trash-alt', 'delete-icon');
+                deleteTask.addEventListener('click', () => {
+                    listItem.remove();
+                });
+
+                listItem.appendChild(checkBox)
+                listItem.appendChild(span)
+                listItem.appendChild(deleteTask)
+                taskList.appendChild(listItem)
+
+                taskInput.value = "";
+            } else {
+                alert("Add your task first")
+                checkTask.style.display = 'none'
+            }
+        });
+
+        clearAllBtn.addEventListener('click', () => {
+            taskList.innerHTML = "";
+        })
+      </script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Duplicate</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background-color: green;
+    }
+    body h1{
+        text-align: center;
+        margin-top: 50px;
+        font-size: 60px;
+        color: red;
+        box-shadow: 0 0 50px green;
+    }
+    .box1{
+        display: flex;
+        margin: 50px 10px;
+        gap: 50px;
+        box-shadow: 0 0 20px;
+        background-color: aqua;
+    }
+    .box1 button,
+    .box2 button,
+    .box3 button  {
+        margin-left: 100px;
+        background-color: #0f4646;
+        color: white;
+        font-size: 30px;
+        border-radius: 10px;
+        border: none;
+        margin-top: 10px;
+    }
+    .box1 button:hover,
+    .box2 button:hover,
+    .box3 button:hover{
+        background-color: #690a72;
+        color: #eef122;
+        font-size: 40px;
+        font-weight: 800;
+    }
+    .img0, .img1, .img2,
+    .img3, .img4,
+    .img5, .img6,
+    .img7, .img8{
+        padding: 10px 20px;
+        border: 5px solid red;
+    }
+    .img0:hover{
+        border: 5px solid blue;
+        box-shadow: 0 0 60px rgb(127, 9, 230);
+    }
+    .img1:hover{
+        border: 5px solid blue;
+        box-shadow: 0 0 60px skyblue;
+    }
+    .img2:hover{
+        border: 5px solid blue;
+        box-shadow: 0 0 60px purple;
+    }
+    .img3:hover{
+        border: 5px solid #24b14e;
+        box-shadow: 0 0 60px #ddf87c;
+    }
+    .img4:hover{
+        border: 5px solid #41c468;
+        box-shadow: 0 0 60px #ad6ce6;
+    }
+    .img5:hover{
+        border: 5px solid #60d669;
+        box-shadow: 0 0 60px #dd52d1;
+    }
+    .img5 button{
+        margin-left: 60px;
+    }
+    .img6:hover{
+        border: 5px solid #1a6820;
+        box-shadow: 0 0 60px #267cad;
+    }
+    .img6 button{
+        margin-left: 50px;
+    }
+    .img7:hover{
+        border: 5px solid #0b8f16;
+        box-shadow: 0 0 60px #9e1d98;
+    }
+    .img8:hover{
+        border: 5px solid #0c3610;
+        box-shadow: 0 0 60px #21f54f;
+    }
+    .pht0, .pht1 {
+        margin-left: 13px;
+        margin-top: 10px;
+    }
+    .box2{
+        display: flex;
+        margin: 200px 10px;
+        gap: 100px;
+        box-shadow: 0 0 20px;
+        background-color: lightsteelblue;
+    }
+    .pht1{
+        width: 500px;
+        height: 450px;
+    }
+    .pht5{
+        margin-left: 50px;
+    }
+    .pht6{
+        height: 450px;
+        width: 400px;
+    }
+    .pht7{
+        height: 450px;
+        width: 500px;
+    }
+    .pht4{
+        height: 480px;
+        width: 390px;
+    }
+    .img7 button{
+        margin-left: 60px;
+    }
+    .box3{
+        display: flex;
+        margin: 200px 10px;
+        gap: 100px;
+        box-shadow: 0 0 20px;
+        background-color: #8b8b8b;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: red;
+        text-align: center;
+        justify-content: center;
+        justify-items: center;
+    }
+    #blankContainer{
+        height: 650px;
+        width: 2500px;
+        box-shadow: 0 0 30px;
+        background-color: purple;
+        margin-top: 100px;
+        text-align: center;
+        justify-content: center;
+        justify-items: center;
+    }
+</style>
+<body>
+    <h1>Shop Now Our Best Coding Books</h1>
+    <div class="image-box">
+
+        <div class="box1">
+            <div class="img0">
+                <img src="https://res.cloudinary.com/dukp6c7f7/image/upload/f_auto,fl_lossy,q_auto/s3-ghost//2018/11/Coders-at-Work.jpg" alt="" class="pht0">
+                <button class="codingBooks">Add to Cart</button>
+            </div>
+            <div class="img1">
+                <img src="https://rukminim1.flixcart.com/image/850/1000/kz1lle80/book/a/g/r/programming-books-bundle-with-project-python-programming-c-original-imagb574gzmkdnhu.jpeg?q=90" alt="" class="pht1">
+                <button class="codingBooks">Add to Cart</button>
+            </div>
+            <div class="img2">
+                <img src="https://cdn.hackr.io/uploads/posts/attachments/the-art-of-computer-programming-volumes-1-4a-boxed-set-1st-edition.jpg" alt="" class="pht2">
+                <button class="codingBooks">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="box2">
+            <div class="img3">
+                <img src="https://images-na.ssl-images-amazon.com/images/I/41VFNO6C4HL.jpg" alt="" class="pht3">
+                <button class="codingBooks">Add to Cart</button>
+            </div>
+            <div class="img4">
+                <img src="https://res.cloudinary.com/dukp6c7f7/image/upload/f_auto,fl_lossy,q_auto/s3-ghost//2018/11/Coders-at-Work.jpg" alt="" class="pht4">
+                <button class="codingBooks">Add to Cart</button>
+            </div>
+            <div class="img5">
+                <img src="https://images-na.ssl-images-amazon.com/images/I/41VFNO6C4HL.jpg" alt="" class="pht5">
+                <button class="codingBooks">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="box3">
+            <div class="img6">
+                <img src="https://m.media-amazon.com/images/I/71zkPeFMA4L._AC_UF1000,1000_QL80_.jpg" alt="" class="pht6">
+                <button class="codingBooks">Add to Cart</button>
+            </div>
+            <div class="img7">
+                <img src="https://rukminim1.flixcart.com/image/850/1000/kz1lle80/book/a/g/r/programming-books-bundle-with-project-python-programming-c-original-imagb574gzmkdnhu.jpeg?q=90" alt="" class="pht7">
+                <button class="codingBooks">Add to Cart</button>
+            </div>
+            <div class="img8">
+                <img src="https://cdn.hackr.io/uploads/posts/attachments/the-art-of-computer-programming-volumes-1-4a-boxed-set-1st-edition.jpg" alt="" class="pht8">
+                <button class="codingBooks">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const addToCartButtons = document.querySelector('.codingBooks');
+
+        let emptyTrolly = document.getElementById(`blankContainer`);
+
+        const audio = new Audio('.')
+
+        const selectedImages = [];
+
+        addToCartButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const productItem = button.parentElement;
+                const productImage = productItem.querySelector('img');
+
+                if(selectedImages.some((img) => img.src === productImage.src)) {
+                    audio.play();
+                    alert(`you have already selected this product..`);
+                    return;
+                }
+                const clonedImage = productImage.cloneNode();
+                emptyTrolly.appendChild(clonedImage);
+                selectedImage.push(clonedImage);
+            });
+        });
+    </script>
+</body>
+</html>

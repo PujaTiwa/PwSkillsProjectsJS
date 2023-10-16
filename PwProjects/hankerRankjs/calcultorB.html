@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+
+</head>
+
+<style>
+    body {
+        width: 33%;
+        background: #212121;
+    }
+
+    #res {
+        background: lightgray;
+        border: solid;
+        height: 48px;
+        font-size: 20px;
+    }
+
+    #btn0,
+    #btn1 {
+        background-color: lightgreen;
+        color: brown;
+    }
+
+    #btnClr,
+    #btnEql {
+        background-color: darkgreen;
+        color: white;
+    }
+
+    #btnSum,
+    #btnSub,
+    #btnMul,
+    #btnDiv {
+        background-color: black;
+        color: red;
+    }
+
+    button {
+        width: 25%;
+        height: 36px;
+        font-size: 18px;
+        margin: 0px;
+        float: left;
+    }
+</style>
+
+<body>
+    <div id="res"></div> <br>
+    <div id="btns" class="classBtn">
+        <button id="btn0">
+            0
+        </button>
+        <button id="btn1">
+            1
+        </button>
+        <button id="btnClr">
+            C
+        </button>
+        <button id="btnEql">
+            =
+        </button>
+        <br>
+        <button id="btnSum">
+            +
+        </button>
+        <button id="btnSub">
+            -
+        </button>
+        <button id="btnMul">
+            *
+        </button>
+        <button id="btnDiv">
+            /
+        </button>
+    </div>
+
+    <script>
+        btnClr.onclick = function(){
+            res.innerHTML = " "
+        }
+
+        btnEql.onclick = function() {
+            let value = res.innerHTML;
+            value = Math.floor(eval(value.replace(/([01]+)/g, '0b$1'))).toString(2);
+            res.innerHTML = value;
+        }
+        btn0.onclick = function(){
+            res.innerHTML += "0";
+        }
+        btn1.onclick = function(){
+            res.innerHTML += "1";
+        }
+        btnSum.onclick = function(){
+            res.innerHTML += "+";
+        }
+        btnSub.onclick = function(){
+            res.innerHTML += "-";
+        }
+        btnMul.onclick = function(){
+            res.innerHTML += "*";
+        }
+        btnDiv.onclick = function(){
+            res.innerHTML += "/"
+        }
+    </script>
+
+</body>
+
+</html>

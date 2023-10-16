@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        margin-top: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        line-height: 50px;
+        font-family: cursive;
+    }
+    h1{
+        font-size: 3rem;
+    }
+    label{
+        font-size: 22px;
+        color: rgb(30, 233, 30);
+    }
+    input{
+        padding: 10px 22px;
+        margin: 10px;
+        font-size: 22px;
+        border-radius: 10px;
+    }
+    button{
+        padding: 10px 24px;
+        margin: 8px;
+        font-size: 20px;
+        border-radius: 1.3rem;
+        color: white;
+        background-color: #f89c45;
+    }
+    #blankContainer{
+        font-size: 2rem;
+        color: white;
+    }
+
+</style>
+<body style="background-color: #212121; color: #fff;">
+    <header>
+        <h1>Inverted right-angled triangle pattern with asterisks</h1>
+    </header>
+    <main>
+        <label for="number">
+            Enter number of rows, that you want to print with an asterisk pattern :
+        </label><br><br>
+        <input type="number" id="input-field" placeholder="Enter row no.">
+        <button id="button">Print pattern</button>
+        <button onclick="location.reload()">Refresh</button>
+
+        <br><br>
+        <div id="blankContainer">Here is the pattern available...</div>
+    </main>
+
+    <script>
+        // let i, j;
+        // let row;
+        // let char = ""
+
+        // for(i=0; i<row; i++) {
+        //     for(j=0; j<row-i; j++) {
+        //        char += "*";
+        //     }
+        //     console.log("\n");
+        // }
+        // console.log(char);
+    
+        const inputField = document.getElementById('input-field');
+        let buttonClick = document.getElementById('button')
+        let asteriskSpace = document.getElementById('blankContainer');
+
+        let storeInput;
+
+        // Define an array of colors
+        const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+
+        // Applying input events on userInput/inputField
+        inputField.addEventListener('input', (e) => {
+            storeInput = Number(e.target.value)
+        });
+
+        // applying event on the button
+        buttonClick.addEventListener('click', () => {
+            asteriskSpace.innerHTML = "";
+
+            for(let row=storeInput; row>=1; row--){
+                let color = colors[row % colors.length];
+
+                for(let col=1; col<=row; col++) {
+                    asteriskSpace.innerHTML += "*";
+                }
+                asteriskSpace.innerHTML += '<br>'
+            };
+        });
+    
+    </script>
+</body>
+</html>

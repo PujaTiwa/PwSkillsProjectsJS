@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+
+    <style>
+        body{
+            background-color: #212121;
+            color: fff;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .container{
+            max-width: 900px;
+            height: 100vh;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-shadow: 0 1px 1px 1px ;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container-div{
+            width: 25rem;
+            border: 1px solid grey;
+            padding: 1rem;
+            background-color: #093e50;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 50px 10px;
+        }
+        h1{
+            color: #fff;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            padding: 10px 25px;
+            border-radius: 10px;
+            margin: 0 8px;
+            border: none;
+            font-weight: 600;
+            color: #313131;
+            cursor: pointer;
+        }
+        .reset{
+            margin-bottom: 10px;
+        }
+        span{
+            border: 1px solid white;
+            color: #fff;
+            padding: 8px;
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="container-div">
+            <h1>Counter App</h1>
+            <div class="buttons">
+                <button class="btn decrement">Decrement by 1</button>
+                <span class="count">0</span>
+                <button class="btn increment">Increment by 1</button>
+                <br><br>
+                <button class="btn reset">Reset Value</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <script>
+        const button = document.querySelector('.buttons');
+        const decrement = document.querySelector('.decrement');
+        const increment = document.querySelector('.increment');
+        const reset = document.querySelector('.reset');
+        const count = document.querySelector('.count');
+
+        decrement.addEventListener('click', () => {
+            count.innerHTML--;
+        })
+        increment.addEventListener('click', () => {
+            count.innerHTML++;
+        })
+        reset.addEventListener('click', () => {
+            count.innerHTML = 0;
+        })
+
+    </script> -->
+
+    <!-- <script>
+        const button = document.querySelector('.buttons');
+        const decrement = document.querySelector('.decrement');
+        const increment = document.querySelector('.increment');
+        const reset = document.querySelector('.reset');
+        const count = document.querySelector('.count');
+
+         Double Click 
+
+        decrement.addEventListener('dblclick', () => {
+            count.innerHTML--;
+        })
+        increment.addEventListener('dblclick', () => {
+            count.innerHTML++;
+        })
+        reset.addEventListener('dblclick', () => {
+            count.innerHTML = 0;
+        })
+
+    </script> -->
+
+    <!-- <script>
+        const button = document.querySelector('.buttons');
+        const decrement = document.querySelector('.decrement');
+        const increment = document.querySelector('.increment');
+        const reset = document.querySelector('.reset');
+        const count = document.querySelector('.count');
+
+        Mouseover
+
+        decrement.addEventListener('mouseover', () => {
+            count.innerHTML--;
+        })
+        increment.addEventListener('mouseover', () => {
+            count.innerHTML++;
+        })
+        reset.addEventListener('mouseover', () => {
+            count.innerHTML = 0;
+        })
+
+    </script> -->
+
+    <!-- <script>
+        const button = document.querySelector('.buttons');
+        const decrement = document.querySelector('.decrement');
+        const increment = document.querySelector('.increment');
+        const reset = document.querySelector('.reset');
+        const count = document.querySelector('.count');
+
+        Mouseout
+
+        decrement.addEventListener('mouseout', () => {
+            count.innerHTML--;
+        })
+        increment.addEventListener('mouseout', () => {
+            count.innerHTML++;
+        })
+        reset.addEventListener('mouseout', () => {
+            count.innerHTML = 0;
+        })
+
+    </script> -->
+
+    <!-- <script>
+        const button = document.querySelector('.buttons');
+        const decrement = document.querySelector('.decrement');
+        const increment = document.querySelector('.increment');
+        const reset = document.querySelector('.reset');
+        const count = document.querySelector('.count');
+
+         onekeypress 
+
+        decrement.addEventListener('keypress', () => {
+            count.innerHTML--;
+        })
+        increment.addEventListener('keypress', () => {
+            count.innerHTML++;
+        })
+        reset.addEventListener('keypress', () => {
+            count.innerHTML = 0;
+        })
+
+    </script> -->
+
+    <!-- <script>
+        const decrement = document.querySelector('.decrement');
+        const increment = document.querySelector('.increment');
+        const reset = document.querySelector('.reset');
+        const count = document.querySelector('.count');
+
+        keydown
+
+        decrement.addEventListener('keydown', () => {
+            count.innerHTML--;
+        })
+        increment.addEventListener('keydown', () => {
+            count.innerHTML++;
+        })
+        reset.addEventListener('keydown', () => {
+            count.innerHTML = 0;
+        })
+
+    </script> -->
+
+<!-- <script>
+    const decrement = document.querySelector('.decrement');
+    const increment = document.querySelector('.increment');
+    const reset = document.querySelector('.reset');
+    const count = document.querySelector('.count');
+
+    keyup
+
+    decrement.addEventListener('keyup', () => {
+        count.innerHTML--;
+    })
+    increment.addEventListener('keyup', () => {
+        count.innerHTML++;
+    })
+    reset.addEventListener('keyup', () => {
+        count.innerHTML = 0;
+    })
+
+</script> -->
+
+</body>
+</html>

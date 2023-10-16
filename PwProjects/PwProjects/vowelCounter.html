@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vowel Counter</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        text-align: center;
+        margin-top: 200px;
+        background: #464646;
+        cursor:grab;
+    }
+    body h1{
+        margin-bottom: 30px;
+        font-size: 72px;
+        color: #34d383;
+    }
+    body label{
+        font-size: 52px;
+    }
+    body input{
+        margin-bottom: 20px;
+        font-size: 32px;
+        border-radius: 8px;
+        padding: 12px;
+    }
+    body input:hover{
+        border-color: red;
+        box-shadow: 0 0 20px;
+    }
+    .container{
+        box-shadow: 0 0 30px;
+        padding: 30px 20px;
+        margin: 100px 200px;
+        background: #a441ad;
+        border-radius: 10px;
+    }
+    button{
+        font-size: 30px;
+        border-radius: 8px;
+        color: white;
+        background-color: #2b383a;
+        gap: 100px;
+        padding: 10px 40px;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+    }
+    #firstButton{
+        margin-right: 50px;
+    }
+    #blankContainer{
+        font-size: 40px;
+        margin-top: 20px;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <h1>Vowel counts in your name</h1>
+
+            <label for="text">Enter your name: </label>
+            <input type="text" name="name" id="inputSection" placeholder="name">
+
+        <div class="btn">
+            <button id="firstButton" onclick="countVowels()">Count</button>
+            <button onclick="window.location.reload()">Refresh</button>
+        </div>
+
+        <div id="blankContainer"></div>
+    </div>
+
+    <script>
+        let blankContainer = document.querySelector("#blankContainer");
+        function countVowels() {
+            const userName = document.getElementById('inputSection').value;
+            let vowelCount = 0;
+
+            for(let i=0; i<userName.length; i++) {
+                const char = userName.charAt(i).toLowerCase();
+
+                if(char === 'a' || char === 'e' || char === 'i' || char === 'o' || char === 'u') {
+                    vowelCount++;
+                }
+            }
+            blankContainer.textContent = `Number of vowels in your name is : ${vowelCount}`;
+        }
+    </script>
+</body>
+</html>

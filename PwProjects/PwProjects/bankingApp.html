@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build a banking application</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        color: white;
+        font-family: monospace;
+    }
+    body{
+        text-align: center;
+        gap: 30px;
+        height: 100vw;
+        width: 100vw;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
+    body > h1{
+        padding: 20px 10px;
+        color: green;
+        animation: glowing 2s linear infinite;
+        width: 30vw;
+        margin-left: 35%;
+        margin-top: 20px;
+        font-size: 40px;
+    }
+    @keyframes glowing {
+        0%{
+            color: red;
+            text-shadow: 0 0 5px red;
+        }
+        50%{
+            color: yellow;
+            text-shadow: 0 0 5px yellow;
+        }
+        100%{
+            color: green;
+            text-shadow: 0 0 5px green;
+        }
+    }
+    button{
+        font-size: 30px;
+        padding: 10px 15px;
+        border-radius: 8px;
+        background-color: transparent;
+        border: 2px solid gray;
+        margin-top: 10px;
+    }
+    #GoToHome{
+        display: none;
+        position: absolute;
+        top: 10px;
+        left: 2rem;
+        background-color: green;
+    }
+    #Home-section{
+        position: absolute;
+        top: 10px;
+        right: 2rem;
+        background-color: green;
+        border: none;
+    }
+    button:hover{
+        font-size: 35px;
+        animation: gradientAnimation 1.5s infinite;
+    }
+    #common-button{
+        display: none;
+        margin-left: 47%;
+        margin-top: 3rem;
+    }
+    @keyframes gradientAnimation{
+        0%{
+            background-image: linear-gradient(to bottom, #ff5e00, #0072ff);
+        }
+        50%{
+            background-image: linear-gradient(to bottom, #3a3fc3, #a5b527);
+        }
+        100%{
+            background-image: linear-gradient(to bottom, #ff00cc, #1c4d39);
+        }
+    }
+    .moneyLabel{
+        font-size: 30px;
+        color: #ff00cc;
+    }
+    input{
+        font-size: 25px;
+        background-color: transparent;
+        border: 2px solid rgb(3, 244, 248);
+        width: 8rem;
+        color: rgb(244, 248, 6);
+        margin: center;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button{
+       -webkit-appearance: none;
+       -moz-appearance: none;
+       appearance: none;
+       margin: 0;
+    }
+    input:focus{
+        outline: none;  
+    }
+    #front-screen{
+        margin-top: 2rem;
+        justify-content: center;
+        align-items: center;
+        gap: 10px
+    }
+    #div-Withdrawl{
+        margin-top: 20px;
+    }
+    #div-History{
+        display: flex;
+        flex-direction: column;
+        border: 2px solid rgb(3, 244, 248);
+        margin-top: 5%;
+        width: 150vw;
+        margin-left: 16%;
+    }
+    #div-History > header{
+        display: flex;
+        justify-content: space-evenly;
+        padding: 10px;
+        gap: 15%;
+        font-size: 20px;
+        background-color: rgb(22, 184, 171);
+    }
+    #div-History > main > div {
+        display: flex;
+        gap: 20%;
+        margin-left: 5%;
+        width: 100%;
+        padding: 10px;
+    }
+    #div-History>footer{
+        background-color: green;
+        padding: 10px;
+        font-size: 20px;
+    }
+    #div-History > main > div > h3:nth-child(3), #div-History > main > div > h3:nth-child(2) {
+        margin-left: -30px;
+    }
+    #div-History > main > div > h3:nth-child(4) {
+        margin-right: 80px;
+    }
+    #div-balance > p {
+        font-size: 38px;
+        color: yellow;
+    }
+    #div-balance > p > span{
+        color: rgb(9, 248, 9);
+    }
+
+
+</style>
+<body>
+    <h1>Banking Application</h1>
+
+    <main>
+        <div id="front-screen">
+            <button type="button" id="depo">Deposite</button>
+            <button type="button" id="withd">Withdrawl</button>
+            <button type="button" id="h">History</button>
+            <button type="button" id="bal">Balance</button>
+        </div>
+
+        <div id="inner-screen"></div>
+
+        <button type="button" id="common-button">Submit</button>
+
+        <button type="button" id="GoToHome">Go To Home</button>
+        <button type="button" id="Home-section">Home</button>
+    </main>
+
+    <!-- <script>
+        let dynamic_Content = {}
+        let amount = 0;
+        let count = 1;
+        let state;
+
+        const Deposite = document.getElementById("depo")
+        const withdrawl = document.getElementById("withd")
+        const history = document.getElementById("h")
+        const Balance= document.getElementById("bal")
+        const commonButton= document.getElementById("common-button")
+        const innerScreen= document.getElementById("inner-screen")
+        const Back= document.getElementById("GoToHome")
+
+        // User interface for deposite"
+        Deposite.addEventListener('click', () => {
+
+            userInterface("Deposite", "flex", "none");
+            state = "Deposite";
+
+            if(dynamic_Content.hasOwnProperty("Deposite")) {
+                dynamic_Content.Deposite.style.display = "block";
+            } else {
+                dynamic_Content.Deposite = document.createElement("div");
+                dynamic_Content.Deposite.id = "div-Deposite";
+                innerScreen.appendChild(dynamic_Content.Deposite)
+
+            // Label 
+            dynamic_Content.Deposite.label = document.createElement("label");
+            dynamic_Content.Deposite.label.className = "moneyLabel";
+            dynamic_Content.Deposite.label.setAttribute ("for", "input-deposite");
+            dynamic_Content.Deposite.label.textContent = "Enter Deposite Amount";
+            dynamic_Content.Deposite.appendChild(dynamic_Content.Deposite.label);
+
+            // Input
+            dynamic_Content.Deposite.input = document.createElement("input");
+            dynamic_Content.Deposite.input.className = "moneyInput";
+            dynamic_Content.Deposite.input.id = "input-deposite";
+            dynamic_Content.Deposite.input.setAttribute ("type", "number");
+            dynamic_Content.Deposite.appendChild(dynamic_Content.Deposite.input);
+
+            // Event Listener
+            dynamic_Content.Deposite.input.addEventListener('input', (e) => {
+                amount = e.target.value;
+                commonButton.style.display = "block"
+            })
+        }
+
+        });
+
+        // User Interface (UI) for withDrawl
+        withdrawl.addEventListener('click', () => {
+            userInterface("withdrawl", 'flex', 'none');
+            state = 'withdrawl';
+
+            if(dynamic_Content.hasOwnProperty("withdrawl")) {
+                dynamic_Content.withdrawl.style.display = "block";
+            } else {
+                dynamic_Content.withdrawl = document.createElement("div");
+                dynamic_Content.id = "div-Withdrawl";
+                innerScreen.appendChild(dynamic_Content.withdrawl)
+
+            // Label 
+            dynamic_Content.withdrawl.label = document.createElement("label");
+            dynamic_Content.withdrawl.label.className = "moneyLabel";
+            dynamic_Content.withdrawl.label.setAttribute ("for", "input-withdrawl");
+            dynamic_Content.withdrawl.label.textContent = "Enter withdrawl Amount";
+            dynamic_Content.withdrawl.appendChild(dynamic_Content.withdrawl.label);
+
+            // Input
+            dynamic_Content.withdrawl.input = document.createElement("input");
+            dynamic_Content.withdrawl.input.className = "moneyInput";
+            dynamic_Content.withdrawl.input.id = "input-deposite";
+            dynamic_Content.withdrawl.input.setAttribute ("type", "number");
+            dynamic_Content.withdrawl.appendChild(dynamic_Content.withdrawl.input);
+
+            // Event Listener
+            dynamic_Content.withdrawl.input.addEventListener('input', (e) => {
+                amount = e.target.value;
+                commonButton.style.display = "block"
+            })
+        }
+    })
+
+        // User Interface (UI) for History
+        history.addEventListener('click', () => {
+           userInterface("history", 'flex', 'none');
+           state = 'history';
+
+           dynamic_Content.history = document.createElement("div");
+           dynamic_Content.history.id = "div-history";
+           innerScreen.appendChild(dynamic_Content.history);
+
+        // createing header
+        dynamic_Content.history.header = document.createElement('header');
+        dynamic_Content.history.appendChild(dynamic_Content.history.header);
+
+        // Inside header creating heading
+        dynamic_Content.history.header.dateCol = document.createElement('h3');
+        dynamic_Content.history.header.dateCol.textContent = 'Date';
+        dynamic_Content.history.header.appendChild(dynamic_Content.history.header.dateCol);
+
+        dynamic_Content.history.header.typeCol = document.createElement('h3');
+        dynamic_Content.history.header.typeCol.textContent = 'Type';
+        dynamic_Content.history.header.appendChild(dynamic_Content.history.header.typeCol);
+
+        dynamic_Content.history.header.amountCol = document.createElement('h3');
+        dynamic_Content.history.header.amountCol.textContent = 'Amount';
+        dynamic_Content.history.header.appendChild(dynamic_Content.history.header.amountCol);
+
+        dynamic_Content.history.header.timeCol = document.createElement('h3');
+        dynamic_Content.history.header.timeCol.textContent = 'Time';
+        dynamic_Content.history.header.appendChild(dynamic_Content.history.header.timeCol);
+
+        // History content UI
+        dynamic_Content.history.transHint = document.createElement("main")
+        dynamic_Content.history.appendChild(dynamic_Content.history.transHint);
+
+        // generating data for history
+        for(let i=(info.customer_1.balanceHistory.length -1); i>=0; i++) {
+            dynamic_Content.history.transHint[`transHint${i}`] = document.createElement('div');
+            dynamic_Content.history.transHint.appendChild(dynamic_Content.history.transHint[`transHint${i}`]);
+
+            // inside div we need to add 4 h3 to add the transaction history
+            dynamic_Content.history.transHint[`transHint${i}`].enterDate = document.createElement('h3');
+            dynamic_Content.history.transHint[`transHint${i}`].enterDate.textContent = info.customer_1.balanceHistory[i].date;
+            dynamic_Content.history.transHint[`transHint${i}`].appendChild(dynamic_Content.history.transHint[`transHint${i}`].enterDate);
+
+            dynamic_Content.history.transHint[`transHint${i}`].enterType = document.createElement('h3');
+            dynamic_Content.history.transHint[`transHint${i}`].enterType.textContent = info.customer_1.balanceHistory[i].type;
+            dynamic_Content.history.transHint[`transHint${i}`].appendChild(dynamic_Content.history.transHint[`transHint${i}`].enterType);
+
+            dynamic_Content.history.transHint[`transHint${i}`].enterAmount = document.createElement('h3');
+            dynamic_Content.history.transHint[`transHint${i}`].enterAmount.textContent = info.customer_1.balanceHistory[i].amount;
+            dynamic_Content.history.transHint[`transHint${i}`].appendChild(dynamic_Content.history.transHint[`transHint${i}`].enterAmount);
+
+            dynamic_Content.history.transHint[`transHint${i}`].enterTime = document.createElement('h3');
+            dynamic_Content.history.transHint[`transHint${i}`].enterTime.textContent = info.customer_1.balanceHistory[i].time;
+            dynamic_Content.history.transHint[`transHint${i}`].appendChild(dynamic_Content.history.transHint[`transHint${i}`].enterTime);
+
+            // Creating a Horizontal line
+            dynamic_Content.history.transHint[`hr${i}`] = document.createElement("hr");
+            dynamic_Content.history.transHint.appendChild(dynamic_Content.history.transHint[`hr${i}`]);
+        }
+
+        dynamic_Content.history.footer = document.createElement("footer");
+        dynamic_Content.history.appendChild(dynamic_Content.history.footer);
+
+        dynamic_Content.history.footer.enterDate = document.createElement('h3');
+        dynamic_Content.history.footer.enterDate.textContent = `Current Balance : ${info.customer_1.balanceAmount}`;
+        dynamic_Content.history.footer.appendChild(dynamic_Content.history.footer.totalBal)
+
+        })
+
+        // User Interface UI for Balance
+        Balance.addEventListener('click', ()=>{
+            userInterface("Balance", "flex", "none");
+            state = "balance"
+
+            dynamic_Content.balance = document.createElement('div');
+            dynamic_Content.balance.id = "div-balance";
+            innerScreen.appendChild(dynamic_Content.balance);
+
+            // Paragraph tag for available balance
+            dynamic_Content.balance.messagePara = document.createElement('p');
+            dynamic_Content.balance.messagePara.innerHTML = `Mr.${info.customer_1.firstName} ${info.customer_1.lastName}, in your account remaining balance is <span>Rs.${info.customer_1.balanceAmount}/-</span>`;
+            dynamic_Content.balance.appendChild(dynamic_Content.balance.messagePara);
+        })
+
+        // Functionality of Back Button
+        Back.addEventListener('click', () => {
+            userInterface("Home", "none", "flex");
+
+            // removing submit button
+            if(state == "Deposite" || state == 'withdrawl') {
+                commonButton.style.display = "none"
+
+                // hiding previous screen data
+                dynamic_Content[state].style.display = "none";
+            } else {
+                dynamic_Content[state].remove();
+            }
+        })
+
+        // Submit button for both deposite and withdrawl
+        commonButton.addEventListener('click', () => {
+            amount = Number(amount);
+            if(amount){
+                if(state === "Deposite"){
+                    info.customer_1.balanceAmount = info.customer_1.balanceAmount + amount;
+                    const date = new Date();
+
+                    info.customer_1.balanceHistory[count] = {
+                        type: "Deposite",
+                        amount: amount,
+                        date: date.toLocaleDateString(),
+                        time: date.toLocaleDateString()
+                    }
+
+                    alert("Transaction Successful !! \n Money Added To Your Account");
+                } else {
+                    info.customer_1.balanceAmount = info.customer_1.balanceAmount - amount;
+                    const date = new Date();
+
+                    info.customer_1.balanceHistory[count] ={
+                        type: "withdrawl",
+                        amount: amount,
+                        date: date.toLocaleDateString(),
+                        time: date.toLocaleDateString()
+                    }
+                    if(amount > info.customer_1.balanceAmount) {
+                        alert("Transaction Unsuccessful !! \n Not sufficient")
+                        return undefined;
+                    }
+                    alert("Transaction Successful !! \n Money Deducted");
+                }
+
+                // empty input box
+                dynamic_Content[state].input.value = "";
+                commonButton.style.display = "none"
+                count++;
+            }
+            else {
+                alert("Please enter amount !!");
+                return undefined;   
+            }
+        })
+
+        
+    </script> -->
+    <script src="index.js"></script>
+</body>
+</html>

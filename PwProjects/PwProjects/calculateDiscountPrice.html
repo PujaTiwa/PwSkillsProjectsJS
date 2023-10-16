@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discout Price</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+          .content-auto {
+            content-visibility: auto;
+          }
+        }
+      </style>
+
+</head>
+<body class="mt-[8%] flex justify-center items-center flex-col bg-gray-700 text-white">
+    <header>
+        <h1 class="text-5xl m-4 mb-6">Calculate Discount Price</h1>
+    </header>
+    <div class="content flex flex-col gap-4 text-yellow-400 mt-4">
+        <span>
+            <label for="actualPrice" class="text-xl">Enter product original price: </label>
+            <input class="rounded ml-2 text-black pt-1 pb-1 pl-2 text-sm" type="number" id="actualPrice">
+        </span>
+        <span>
+            <label for="discountedPrice" class="text-xl">Enter product discounted price: </label>
+            <input class="rounded ml-2 text-black pt-1 pb-1 pl-2 text-sm" type="number" id="discountedPrice">
+        </span>
+        <span class="ml-[20%] mt-5">
+            <button id="disc-btn" class="p-2 pt-1 pb-1 m-2 rounded text-center text-white bg-purple-500">Show Discount</button>
+            <button onclick="location.reload()" class="p-2 pt-1 pb-1 m-2 rounded text-center text-white bg-purple-500">Refresh</button>
+        </span>
+
+    </div>
+
+    <footer>
+        <div class="output"></div>
+        <img class="cong-img" src="" alt="">
+    </footer>
+
+    <script>
+        const discountBtn = document.querySelector('#disc-btn')
+        discountBtn.addEventListener('click', () => {
+            let originalPrice = document.querySelector(`#actualPrice`).value;
+            let discountedPrice = document.querySelector(`#discountedPrice`).value;
+
+            if(originalPrice === "" || discountedPrice === "") {
+                alert("fill up all the input field..")
+            } else {
+                const discount = originalPrice - discountedPrice;
+                const percentageDiscount = 100*(Number(discount/originalPrice))
+                document.querySelector('.output').innerHTML = `congratulations you got <span class="discount-percentage">${percentageDiscount.toFixed(2)}% </span> discount on this product`;
+                document.querySelector('.cong-img').style.display = 'flex';
+            }
+        })
+    </script>
+</body>
+</html>

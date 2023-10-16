@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Mixer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="boxShadow">
+        <h1>Color Mixer</h1>
+        <form id="inputColorName">
+            <label for="text">Color1: 
+                <input type="text"" id="Color1">
+            </label>
+
+            <label for="text">Color2: 
+                <input type="text"" id="Color2">
+            </label>
+            <button id="mixColor">mix color</button>
+        </form>
+    </div>
+
+    <div id="resultantColorBox"></div>
+    <div id="resultantColorName">Output color: </div>
+
+    <script>
+        const inputColor = document.querySelector('#inputColorName');
+        const firstColorInput = document.querySelector('#Color1');
+        const secondColorInput = document.querySelector('#Color2');
+        const colorBox = document.querySelector('#resultantColorBox');
+        const colorName = document.querySelector('#resultantColorName');
+
+        inputColor.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const firstColor = firstColorInput.value.toLowerCase();
+            const secondColor = secondColorInput.value.toLowerCase();
+
+            let mixedColor;
+            switch(firstColor) {
+                case "red":
+                    switch(secondColor) {
+                        case "blue":
+                            mixedColor = "Purple";
+                            break;
+                        case "yellow":
+                            mixedColor = "Orange";
+                            break;
+                        default:
+                            mixedColor = 'Invalid color combination!';        
+                    }
+                    break;
+                case "blue":
+                    switch(secondColor) {
+                        case "red":
+                            mixedColor = "Purple";
+                            break;
+                        case "yellow":
+                            mixedColor = "Green";
+                            break;
+                        default:
+                            mixedColor = 'Invalid color combination!';    
+                    }    
+                    break;
+                case "yellow":
+                    switch(secondColor) {
+                        case "red":
+                            mixedColor = "Orange";
+                            break;
+                        case "blue":
+                            mixedColor = "Green";
+                            break;
+                        default:
+                            mixedColor = 'Invalid color combination!';        
+                    }  
+                    break;
+                default:
+                    mixedColor = 'Invalid color combination!';  
+            }
+
+            if(mixedColor == 'Invalid color combination!') {
+                resultantColorBox.style.backgroundColor = 'white';
+            } else {
+                colorBox.style.backgroundColor = mixedColor;
+            }
+            colorName.textContent = mixedColor;
+            colorName.style.color = mixedColor;
+        });
+    </script>
+
+</body>
+</html>

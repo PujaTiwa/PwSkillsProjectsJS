@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Move the Image</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+          .content-auto {
+            content-visibility: auto;
+          }
+        }
+      </style>
+</head>
+<body>
+    <div class="container m-2 text-center">
+        <h1>Move the Image</h1>
+        <img class="w-[20%]" src="https://i.pinimg.com/originals/32/76/24/32762401d6c44f59320a7cecdcf85f6f.gif" alt="Image" id="moving-img">
+    </div>
+
+    <script>
+        const movingImg = document.getElementById('moving-img');
+
+        let x_axis_movement = 0
+        let y_axis_movement = 0
+        const imageMove = 10
+
+        const viewportWidth = window.innerWidth;
+        console.log(viewportWidth);
+        const viewportHeight = window.innerHeight;
+        console.log(viewportHeight);
+
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowUp':
+                    y_axis_movement -= imageMove;
+                    console.log(y_axis_movement);
+                    if(y_axis_movement <= -viewportHeight/2) {
+                        y_axis_movement = viewportHeight/2;
+                        console.log('value injected' + y_axis_movement);
+                    }
+                    break;
+                case 'ArrowDown':
+                    y_axis_movement += imageMove;
+                    console.log(y_axis_movement);
+                    if(y_axis_movement >= viewportHeight/2) {
+                        y_axis_movement = -viewportHeight/2;
+                    }
+                    break;
+                case 'ArrowRight':
+                    x_axis_movement += imageMove;
+                    console.log(x_axis_movement);
+                    if(x_axis_movement >= viewportWidth/2) {
+                        x_axis_movement = -viewportWidth/2;
+                    }
+                    break;
+                case 'ArrowLeft':
+                    x_axis_movement -= imageMove;
+                    console.log(x_axis_movement);
+
+                    if(x_axis_movement <= -viewportWidth/2) {
+                        x_axis_movement = viewportWidth/2;
+                    }
+                    break;
+            }
+
+            movingImg.style.transform = `translate(${x_axis_movement}px, ${y_axis_movement}px)`;
+        })
+    </script>
+</body>
+</html>

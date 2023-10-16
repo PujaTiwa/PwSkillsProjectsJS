@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bar</title>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair:wght@600&display=swap');
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family:Arial, Helvetica, sans-serif;
+}
+header {
+  background-color: #1586a8;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 64px;
+  height: 82px;
+  border-radius: 80%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -16px;
+}
+  
+  .logo img {
+    max-width: 800%;
+    max-height: 150%;
+    margin-right: 50%;
+  }
+
+nav {
+  margin-top: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 5px 10px;
+}
+
+nav ul li a:hover {
+  background-color: #333;
+  color: #fff;
+}
+ body{
+  font-size: 30px;
+  margin: 10px;
+  background-color: #333;
+  color: #8a8888;
+ } 
+ #progress-bar {
+  width: 0%;
+  height: 50px;
+  background-color: #c959f5;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+</style>
+</head>
+<body>
+        <header>
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/640px-JavaScript-logo.png"> Your Logo </div>
+              <nav>
+                <ul>
+                  <li><a href="https://en.wikipedia.org/wiki/JavaScript">Blog</a></li>
+                  <li><a href="https://www.youtube.com/@nitishofficial5147">About</a></li>
+                  <li><a href="https://myfirstgameproject.netlify.app">Contact</a></li>
+                </ul>
+              </nav>
+        </header>
+    
+        <div id="progress-bar"></div>
+    
+        
+        <div> 
+        <h2>javascript overview</h2>
+        <p>
+          JavaScript (/ˈdʒɑːvəskrɪpt/), often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS. As of 2022, 98% of websites use JavaScript on the client side for webpage behavior, often incorporating third-party libraries. All major web browsers have a dedicated JavaScript engine to execute the code on users' devices.
+    
+    JavaScript is a high-level, often just-in-time compiled language that conforms to the ECMAScript standard.[10] It has dynamic typing, prototype-based object-orientation, and first-class functions. It is multi-paradigm, supporting event-driven, functional, and imperative programming styles. It has application programming interfaces (APIs) for working with text, dates, regular expressions, standard data structures, and the Document Object Model (DOM).
+    
+    The ECMAScript standard does not include any input/output (I/O), such as networking, storage, or graphics facilities. In practice, the web browser or other runtime system provides JavaScript APIs for I/O.
+    
+    JavaScript engines were originally used only in web browsers, but are now core components of some servers and a variety of applications. The most popular runtime system for this usage is Node.js.
+    
+    Although Java and JavaScript are similar in name, syntax, and respective standard libraries, the two languages are distinct and differ greatly in design.
+        </p>
+      </div>
+    
+    
+      <div>
+        <h2>History</h2>
+        <p>
+          <mark>Creation at Netscape</mark> <hr>
+    The first popular web browser with a graphical user interface, Mosaic, was released in 1993. Accessible to non-technical people, it played a prominent role in the rapid growth of the nascent World Wide Web.[11] The lead developers of Mosaic then founded the Netscape corporation, which released a more polished browser, Netscape Navigator, in 1994. This quickly became the most-used.[12][13]
+    
+    During these formative years of the Web, web pages could only be static, lacking the capability for dynamic behavior after the page was loaded in the browser. There was a desire in the flourishing web development scene to remove this limitation, so in 1995, Netscape decided to add a scripting language to Navigator. They pursued two routes to achieve this: collaborating with Sun Microsystems to embed the Java programming language, while also hiring Brendan Eich to embed the Scheme language.[6]
+    
+    Netscape management soon decided that the best option was for Eich to devise a new language, with syntax similar to Java and less like Scheme or other extant scripting languages.[5][6] Although the new language and its interpreter implementation were called LiveScript when first shipped as part of a Navigator beta in September 1995, the name was changed to JavaScript for the official release in December.[6][1][14]
+    
+    The choice of the JavaScript name has caused confusion, implying that it is directly related to Java. At the time, the dot-com boom had begun and Java was the hot new language, so Eich considered the JavaScript name a marketing ploy by Netscape.[15]
+    
+    
+      <br> <br> <mark>Adoption by Microsoft</mark>
+    Microsoft debuted Internet Explorer in 1995, leading to a browser war with Netscape. On the JavaScript front, Microsoft reverse-engineered the Navigator interpreter to create its own, called JScript.[16]
+    
+    JScript was first released in 1996, alongside initial support for CSS and extensions to HTML. Each of these implementations was noticeably different from their counterparts in Navigator.[17][18] These differences made it difficult for developers to make their websites work well in both browsers, leading to widespread use of "best viewed in Netscape" and "best viewed in Internet Explorer" logos for several years.[17][19]
+    
+     <br> <br> <mark>The rise of JScript</mark>
+    In November 1996, Netscape submitted JavaScript to Ecma International, as the starting point for a standard specification that all browser vendors could conform to. This led to the official release of the first ECMAScript language specification in June 1997.
+    
+    The standards process continued for a few years, with the release of ECMAScript 2 in June 1998 and ECMAScript 3 in December 1999. Work on ECMAScript 4 began in 2000.[16]
+    
+    Meanwhile, Microsoft gained an increasingly dominant position in the browser market. By the early 2000s, Internet Explorer's market share reached 95%.[20] This meant that JScript became the de facto standard for client-side scripting on the Web.
+    
+    Microsoft initially participated in the standards process and implemented some proposals in its JScript language, but eventually it stopped collaborating on Ecma work. Thus ECMAScript 4 was mothballed.
+    
+    <br> <br> <mark>Growth and standardization  </mark>
+    During the period of Internet Explorer dominance in the early 2000s, client-side scripting was stagnant. This started to change in 2004, when the successor of Netscape, Mozilla, released the Firefox browser. Firefox was well received by many, taking significant market share from Internet Explorer.[21]
+    
+    In 2005, Mozilla joined ECMA International, and work started on the ECMAScript for XML (E4X) standard. This led to Mozilla working jointly with Macromedia (later acquired by Adobe Systems), who were implementing E4X in their ActionScript 3 language, which was based on an ECMAScript 4 draft. The goal became standardizing ActionScript 3 as the new ECMAScript 4. To this end, Adobe Systems released the Tamarin implementation as an open source project. However, Tamarin and ActionScript 3 were too different from established client-side scripting, and without cooperation from Microsoft, ECMAScript 4 never reached fruition.
+    
+    Meanwhile, very important developments were occurring in open-source communities not affiliated with ECMA work. In 2005, Jesse James Garrett released a white paper in which he coined the term Ajax and described a set of technologies, of which JavaScript was the backbone, to create web applications where data can be loaded in the background, avoiding the need for full page reloads. This sparked a renaissance period of JavaScript, spearheaded by open-source libraries and the communities that formed around them. Many new libraries were created, including jQuery, Prototype, Dojo Toolkit, and MooTools.
+    
+    Google debuted its Chrome browser in 2008, with the V8 JavaScript engine that was faster than its competition.[22][23] The key innovation was just-in-time compilation (JIT),[24] so other browser vendors needed to overhaul their engines for JIT.[25]
+    
+    In July 2008, these disparate parties came together for a conference in Oslo. This led to the eventual agreement in early 2009 to combine all relevant work and drive the language forward. The result was the ECMAScript 5 standard, released in December 2009.
+    
+    <br> <br> <mark>Reaching maturity  </mark>
+    Ambitious work on the language continued for several years, culminating in an extensive collection of additions and refinements being formalized with the publication of ECMAScript 6 in 2015.[26]
+    
+    The creation of Node.js in 2009 by Ryan Dahl sparked a significant increase in the usage of JavaScript outside of web browsers. Node combines the V8 engine, an event loop, and I/O APIs, thereby providing a stand-alone JavaScript runtime system.[27][28] As of 2018, Node had been used by millions of developers,[29] and npm had the most modules of any package manager in the world.[30]
+    
+    The ECMAScript draft specification is currently maintained openly on GitHub, and editions are produced via regular annual snapshots.[31] Potential revisions to the language are vetted through a comprehensive proposal process.[32][33] Now, instead of edition numbers, developers check the status of upcoming features individually.[31]
+    
+    The current JavaScript ecosystem has many libraries and frameworks, established programming practices, and substantial usage of JavaScript outside of web browsers. Plus, with the rise of single-page applications and other JavaScript-heavy websites, several transpilers have been created to aid the development process.[34]
+        </p>
+      </div>
+    
+    
+      <div> 
+        <h2>Miscellaneous</h2>
+        <p> JavaScript is a zero-index language.
+    
+          Run-time environment JavaScript is a zero-index language.
+    
+     <br> <br> <mark>Run-time environment</mark>
+    JavaScript typically relies on a run-time environment (e.g., a web browser) to provide objects and methods by which scripts can interact with the environment (e.g., a web page DOM). These environments are single-threaded. JavaScript also relies on the run-time environment to provide the ability to include/import scripts (e.g., HTML  elements). This is not a language feature per se, but it is common in most JavaScript implementations. JavaScript processes messages from a queue one at a time. JavaScript calls a function associated with each new message, creating a call stack frame with the function's arguments and local variables. The call stack shrinks and grows based on the function's needs. When the call stack is empty upon function completion, JavaScript proceeds to the next message in the queue. This is called the event loop, described as "run to completion" because each message is fully processed before the next message is considered. However, the language's concurrency model describes the event loop as non-blocking: program input/output is performed using events and callback functions. This means, for instance, that JavaScript can process a mouse click while waiting for a database query to return information.[67]
+    Variadic functions
+    An indefinite number of parameters can be passed to a function. The function can access them through formal parameters and also through the local arguments object. Variadic functions can also be created by using the bind method.
+     <br> <br> <mark>Array and object literals </mark>
+    Like many scripting languages, arrays and objects (associative arrays in other languages) can each be created with a succinct shortcut syntax. In fact, these literals form the basis of the JSON data format.
+    Regular expressions
+    JavaScript also supports regular expressions in a manner similar to Perl, which provide a concise and powerful syntax for text manipulation that is more sophisticated than the built-in string functions.[68]
+     <br> <br> <mark>Promises and Async/await </mark>
+    JavaScript supports promises and Async/await for handling asynchronous operations. A built-in Promise object provides functionality for handling promises and associating handlers with an asynchronous action's eventual result. Recently, combinator methods were introduced in the JavaScript specification, which allows developers to combine multiple JavaScript promises and do operations based on different scenarios. The methods introduced are: Promise.race, Promise.all, Promise.allSettled and Promise.any. Async/await allows an asynchronous, non-blocking function to be structured in a way similar to an ordinary synchronous function. Asynchronous, non-blocking code can be written, with minimal overhead, structured similar to traditional synchronous, blocking code.
+    Vendor-specific extensions
+    Historically, some JavaScript engines supported these non-standard features:
+    
+     <br> <br> <mark>conditional catch clauses (like Java)</mark>
+    array comprehensions and generator expressions (like Python)
+    concise function expressions (function(args) expr; this experimental syntax predated arrow functions)
+    ECMAScript for XML (E4X), an extension that adds native XML support to ECMAScript (unsupported in Firefox since version 21[69])
+          JavaScript typically relies on a run-time environment (e.g., a web browser) to provide objects and methods by which scripts can interact with the environment (e.g., a web page DOM). These environments are single-threaded. JavaScript also relies on the run-time environment to provide the ability to include/import scripts (e.g., HTML  elements). This is not a language feature per se, but it is common in most JavaScript implementations. JavaScript processes messages from a queue one at a time. JavaScript calls a function associated with each new message, creating a call stack frame with the function's arguments and local variables. The call stack shrinks and grows based on the function's needs. When the call stack is empty upon function completion, JavaScript proceeds to the next message in the queue. This is called the event loop, described as "run to completion" because each message is fully processed before the next message is considered. However, the language's concurrency model describes the event loop as non-blocking: program input/output is performed using events and callback functions. This means, for instance, that JavaScript can process a mouse click while waiting for a database query to return information.[67]
+          Variadic functions
+          An indefinite number of parameters can be passed to a function. The function can access them through formal parameters and also through the local arguments object. Variadic functions can also be created by using the bind method.
+          Array and object literals
+          Like many scripting languages, arrays and objects (associative arrays in other languages) can each be created with a succinct shortcut syntax. In fact, these literals form the basis of the JSON data format.
+            <br> <br> <mark>Regular expressions </mark>
+          JavaScript also supports regular expressions in a manner similar to Perl, which provide a concise and powerful syntax for text manipulation that is more sophisticated than the built-in string functions.[68]
+          Promises and Async/await
+          JavaScript supports promises and Async/await for handling asynchronous operations. A built-in Promise object provides functionality for handling promises and associating handlers with an asynchronous action's eventual result. Recently, combinator methods were introduced in the JavaScript specification, which allows developers to combine multiple JavaScript promises and do operations based on different scenarios. The methods introduced are: Promise.race, Promise.all, Promise.allSettled and Promise.any. Async/await allows an asynchronous, non-blocking function to be structured in a way similar to an ordinary synchronous function. Asynchronous, non-blocking code can be written, with minimal overhead, structured similar to traditional synchronous, blocking code.
+          Vendor-specific extensions
+          Historically, some JavaScript engines supported these non-standard features:
+          
+          <br> <br> <mark> conditional catch clauses (like Java)   </mark>
+          array comprehensions and generator expressions (like Python)
+          concise function expressions (function(args) expr; this experimental syntax predated arrow functions)
+          ECMAScript for XML (E4X), an extension that adds native XML support to ECMAScript (unsupported in Firefox since version 21[69])
+           </p>
+      </div>
+    
+    <script>
+        window.addEventListener('scroll', () =>{
+            const scrollTopPosition = document.documentElement.scrollTop || document.body.scrollTop;
+            console.log(scrollTopPosition);
+
+            const totalHeightOfPage = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            console.log(totalHeightOfPage);
+
+            const scrollProgress = Math.floor((scrollTopPosition / totalHeightOfPage) * 100);
+            console.log(scrollProgress);
+
+        const progressBar =  document.getElementById('progress-bar')
+        progressBar.style.width = scrollProgress + '%';
+        progressBar.textContent = "Progress bar --> " + scrollProgress + '%'
+        progressBar.style.color = '#56e7f1';
+        progressBar.style.fontWeight = '700'
+    });
+    </script>
+</body>
+</html>

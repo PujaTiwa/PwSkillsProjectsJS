@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text and Search Highlighting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+          .content-auto {
+            content-visibility: auto;
+          }
+        }
+      </style>
+
+</head>
+<body class="font-mono ">
+    <header class="text-center">
+        <h1 id="heading" class="text-3xl mt-2">Text and search highlight</h1>
+        <button id="highlightBtn" class="p-2 m-2 mt-4 mb-4 bg-purple-700 rounded text-yellow-400 text-sm italic">Show highlight</button>
+        <input type="text" id="search" placeholder="Search" class="p-2 m-2 bg-purple-100 rounded text-yellow-400 text-sm italic">
+    </header>
+    <main>
+        <p id="lorem_para"> Create a Cluster
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia vero et, beatae autem accusamus odit provident rerum quo deleniti, distinctio at ad explicabo dignissimos deserunt, commodi facilis reiciendis quaerat facere atque doloremque numquam praesentium. Sapiente non consequatur quibusdam explicabo quam dolorem, cum repudiandae corporis laborum quo tempore earum praesentium obcaecati, excepturi ipsum nesciunt architecto, ipsam atque? Mollitia nesciunt dolorem doloremque in veniam modi architecto iste, aperiam error molestiae, eveniet repellendus commodi tempore sapiente dicta non, natus reiciendis id repudiandae. Quam molestiae est at soluta laboriosam quibusdam, dolore ipsa voluptatem totam excepturi fuga nobis ut non id repellat placeat? Modi, unde?
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore consequuntur cupiditate sequi similique voluptate obcaecati quis est placeat, illo neque ullam nesciunt? Quia eaque vitae ab at inventore voluptatibus ipsum cumque animi deserunt? Eos vero saepe esse delectus, ab enim hic animi illum accusamus nisi ratione maxime incidunt officia sed quae fugiat amet. Saepe laborum qui, eveniet quam quibusdam repellendus doloribus? Non sapiente ut aliquam perferendis dolor. Consectetur accusantium cupiditate rem incidunt aspernatur velit reprehenderit sunt eligendi at explicabo magni odio assumenda atque debitis hic porro nulla perspiciatis aperiam modi, rerum commodi enim tenetur minus ipsa. Culpa nobis doloremque dolorum odio quidem vel maiores ratione perspiciatis sed a sunt nostrum exercitationem corrupti iusto ex, molestiae aliquid dignissimos, optio facilis quaerat. Suscipit dicta possimus ipsam voluptatibus molestiae libero sequi aperiam consectetur quaerat dolorum minus tempora, ipsa sint, molestias voluptates at, voluptate laborum distinctio non accusamus veritatis. Qui, voluptatem ducimus earum eos amet est maxime libero optio atque labore ipsum, tempora corporis, nemo quam facere veritatis. Eius non vitae corrupti accusamus at, aliquid nam modi ducimus fugit animi totam ut maxime laudantium exercitationem quam, voluptates officiis illum voluptatibus eligendi, dignissimos facere voluptate natus esse odit. Vel laborum id maiores cumque! Totam debitis sapiente adipisci repellendus alias sit quia illum quas soluta praesentium minus, enim officiis similique eum quidem iusto quibusdam magnam eveniet quae labore reiciendis voluptatem sunt. Voluptatum provident non fuga iure et. Debitis adipisci culpa ratione obcaecati, minima sequi tempore ab consectetur dignissimos vel similique odio nostrum molestiae, eos nesciunt esse quibusdam dolor saepe delectus inventore corrupti! Quos eligendi ex sit, impedit quasi dignissimos alias, tenetur tempore ut totam sint, veniam eius libero vitae doloribus necessitatibus repudiandae a aperiam? Earum quam aperiam facilis unde et laudantium cupiditate dolorem minus aspernatur, ipsa porro provident dignissimos quaerat similique obcaecati! Nihil fugiat distinctio eveniet consequatur voluptate aperiam, accusantium sequi odit dignissimos neque incidunt vero necessitatibus eos deleniti ad. Unde, commodi tenetur! Atque quos quisquam assumenda soluta impedit magnam deserunt ut, iusto autem qui ratione voluptatum quia itaque quae totam fuga provident enim amet nesciunt sit nisi sint tempore minus! Harum expedita, necessitatibus officia commodi magnam porro et numquam ipsa quis itaque repellendus eveniet nam, beatae soluta hic at explicabo nesciunt. Facere aperiam asperiores culpa id hic impedit nam harum a voluptas, soluta, aspernatur inventore nihil quo iste officia repellat recusandae est fugit officiis praesentium quasi doloribus aliquam delectus rem. Pariatur omnis alias error incidunt doloribus fugiat odit consectetur similique, magni modi, amet fugit quae perspiciatis nulla nam deserunt laudantium! Repudiandae voluptatum enim voluptas natus vitae eos expedita sit omnis quo animi, optio autem id neque iusto pariatur ab, laborum fugit unde exercitationem. Suscipit debitis perferendis quibusdam recusandae dolorem nulla vero ab incidunt placeat ea dolores, repudiandae eaque laudantium rerum neque deleniti sequi, voluptatibus sint. Cumque suscipit voluptatibus dolor provident, hic quaerat reiciendis. Rerum debitis illo perspiciatis deserunt eaque quaerat sunt! Totam aperiam distinctio, doloribus reiciendis quaerat odio modi tempore iure facilis placeat, et minus cumque sequi nobis. Odio eum quisquam dolorem minus eaque! Vel.
+        </p>
+    </main>
+
+    <script>
+        const button = document.getElementById("highlightBtn");
+        const para = document.getElementById('lorem_para');
+        const search = document.getElementById('search');
+
+        button.addEventListener('click', () => {
+            const wordArr = para.innerText.split(' ');
+
+            for(let i=0; i<wordArr.length; i++) {
+                if(wordArr[i].length > 8) {
+                    const highlightWord = document.createElement('span');
+                    highlightWord.classList.add('highlight')
+
+                    highlightWord.innerHTML = wordArr[i];
+                    highlightWord.style.backgroundColor = 'green'
+                    highlightWord.style.color = 'black';
+                    wordArr[i] = highlightWord.outerHTML;
+                }
+            }
+            para.innerHTML = wordArr.join(' ');
+        });
+
+        // For searching 
+        search.addEventListener('input', () => {
+            const searchVal = search.value.toLowerCase();
+            const wordArr = para.innerText.split(' ');
+
+            for(let i=0; i < wordArr.length; i++) {
+                const word = wordArr[i].toLowerCase()
+                const highlightWord = document.createElement('span')
+                highlightWord.classList.add('highlight')
+                highlightWord.innerHTML = wordArr[i]
+
+                if(searchVal !== '' && word.includes(searchVal)) {
+                    highlightWord.style.backgroundColor = 'aqua'
+                    highlightWord.style.color = 'black'
+                } else {
+                    highlightWord.style.backgroundColor = 'transparent';
+                }
+                wordArr[i] = highlightWord.outerHTML;
+            }
+            para.innerHTML = wordArr.join(' ');
+        })
+    </script>
+</body>
+</html>

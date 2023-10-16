@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validate Password</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    body{
+        text-align: center;
+        margin-top: 10%;
+        margin-left: 25%;
+        background-color: black;
+        color: white;
+        border: 2px solid palevioletred;
+        border-radius: 10px;
+        padding: 30px;
+        width: 50%;
+    }
+    h1{
+        color: greenyellow;
+    }
+    form{
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+        font-size: 30px;
+    }
+    input{
+        font-size: 20px;
+        width: 40%;
+        text-align: center;
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid green;
+        color: green;
+        border-radius: 10px;
+    }
+    input:focus {
+        outline: none;
+    }
+    button{
+        margin-top: 30px;
+        font-size: 30px;
+        padding: 5px 20px;
+        border-radius: 20px;
+        background-color: #0fb2f3;
+        color: white;
+        border: none;
+    }
+    button:hover{
+        font-size: 35px;
+        background-color: gold;
+        font-weight: 700;
+    }
+    .email {
+        margin-bottom: 30px;
+    }
+    .output{
+        font-size: 30px;
+        margin-top: 5%;
+    }
+    #error-msg{
+        color: red;
+        display: none;
+    }
+    #validation-msg{
+        color: green;
+        display: none;
+    }
+</style>
+<body>
+    <div class="container">
+    <h1>Login Form for Validation</h1>
+    <form action="" id="login-form">
+        <div class="email">
+            <label for="email-input">Enter Email : </label>
+            <input type="email" id="email-input" placeholder="Email" required><br><br>
+
+        </div>
+        <div>
+            <label for="password-input">Enter Password : </label>
+            <input type="password" id="password-input" placeholder="Password" required><br><br>
+
+        </div>
+
+        <button type="submit" id="btn">Submit</button>
+    </form>
+
+    <div class="output">
+        <p id="error-msg">Invalid email or password..</p>
+        <p id="validation-msg">Valid email or password..</p>
+    </div>
+</div>
+
+    <script>
+        let formLogin = document.getElementById("login-form");
+        formLogin.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById("email-input").value;
+            const password = document.getElementById("password-input").value;
+            const inputEr = document.getElementById("error-msg");
+            const inputVd = document.getElementById("validation-msg");
+
+            if(email.indexOf("@") === -1 || password.length < 8) {
+                inputEr.style.display = "block";
+                inputEr.style.color = "red";
+                inputVd.style.display = "none";
+                
+            } else {
+                inputEr.style.display = "none";
+                inputVd.style.display = "block";
+                inputEr.style.color = "green";
+            }
+
+        });
+
+    </script>
+</body>
+</html>

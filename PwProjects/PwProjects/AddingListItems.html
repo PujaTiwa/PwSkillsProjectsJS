@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+          .content-auto {
+            content-visibility: auto;
+          }
+        }
+    </style>
+    <title>Adding List Items</title>
+</head>
+
+<body class="flex flex-col items-center justify-center m-6 bg-gray-800 text-white">
+    <h1 id="listHeading" class="text-3xl">Dynamically adding list items to an order list</h1>
+    <button id="listButton" class="bg-orange-600 rounded p-2 mt-4 hover:-translate-y-0.5 transition motion-reduce:hover:translate-y-0 motion-reduce:transition-none ...">Add Items</button>
+
+    <li id="listResult" class="italic"></li>
+
+
+    <script>
+        const addItemBtn = document.getElementById('listButton')
+        const listContainer = document.getElementById('listResult')
+        let currentListItemIndex = 0;
+
+        addItemBtn.addEventListener('click', () => {
+            if (currentListItemIndex < listItem.length) {
+                const newList = document.createElement('li');
+                newList.textContent = listItem[currentListItemIndex]
+                listContainer.appendChild(newList);
+                currentListItemIndex++;
+            } else {
+                alert(`All items have been added in list!`)
+            }
+        })
+
+        const listItem = [
+            `HTML, and Semantics`,
+            `Starting with CSS`,
+            `Working Template`,
+            `Mobile responsive webpages`,
+            `Grid and Flex - box in CSS`,
+            `Projects using HTML & CSS`,
+            `Version Control and Git`,
+            `Getting Started with JavaScript`,
+            `Advance JavaScript`,
+            `Working with DOM`,
+            `Making Projects using HTML, CSS and JavaScript`,
+            `Understanding Fundamental of Computer Science`,
+            `Getting Started with Database`,
+            `Understanding the Database`,
+            `Starting with NodeJS and Express`,
+            `Understanding React and its Fundamentals`,
+            `Understanding Hooks and Routers`,
+            `Starting and Completing Full Fledge Projects`
+        ];
+    </script>
+</body>
+
+</html>

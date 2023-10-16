@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Unit converter</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: cursive;
+    }
+    body{
+        background-color: #212121;
+        color: white;
+    }
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 300px;
+        gap: 20px;
+    }
+    h1{
+        color: green;
+        font-size: 56px;
+    }
+    .convertBtn{
+        padding: 10px 14px;
+        margin: 10px;
+        color: white;
+        background-color: #212121;
+        font-size: 22px;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+    label{
+        font-size: 24px;
+    }
+    input{
+        padding: 8px ;
+        margin: 10px;
+        color: black;
+        font-size: 22px;
+        width: 80px;
+        text-align: center;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+    #output{
+        padding: 16px 48px;
+        margin: 10px;
+        color: white;
+        background-color: #212121;
+        font-size: 18px; 
+    }
+</style>
+<body>
+    <div class="container">
+        <h1>Convert &deg;C to &deg;F</h1>
+        <div id="input"></div>
+        <div>
+            <label for="">Temperature in &deg;C</label>
+            <input id="cel" type="number" placeholder="0&deg;C"><br>
+        </div>
+    
+        <div>
+            <button class="convertBtn">Convert</button>
+            <button id="refresh" onclick="window.location.reload()" class="convertBtn">Refresh</button><br>
+        </div>
+        <div id="output"></div>
+
+    </div>
+
+    <script>
+        const btn = document.querySelector('.convertBtn');
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const celsius = document.getElementById('cel').value;
+
+            const fahrenheit = (celsius * 9/5) + 32;
+
+            const createInputField = document.createElement("input");
+            createInputField.setAttribute('id', 'result')
+            createInputField.readOnly = true;
+
+            createInputField.placeholder = `result in \u{2109} `;
+
+            const addIn = document.getElementById('output')
+            // Remove previous result if exists
+            const previousRes = document.getElementById('result')
+            if(previousRes) {
+                previousRes.remove();
+            }
+
+            addIn.appendChild(createInputField);
+            createInputField.value = fahrenheit + "\u{2109}"
+        })
+
+    </script>
+</body>
+</html>
